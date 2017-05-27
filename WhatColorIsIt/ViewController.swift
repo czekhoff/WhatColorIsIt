@@ -35,4 +35,8 @@ class ViewController: UIViewController {
         
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.run), userInfo: nil, repeats: true)
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
