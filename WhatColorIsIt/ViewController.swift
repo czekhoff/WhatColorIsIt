@@ -14,6 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     
     func run() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        label.text = dateFormatter.string(from: Date())
+        
         let calendar = Calendar.current
         let hours = (calendar as NSCalendar).component(.hour, from: Date())
         let minutes = (calendar as NSCalendar).component(.minute, from: Date())
@@ -23,17 +27,15 @@ class ViewController: UIViewController {
         let greenColor = CGFloat(minutes) / 255
         let blueColor = CGFloat(seconds) / 255
         let color = UIColor(red: redColor, green: greenColor, blue: blueColor, alpha: 1)
-        
-        label.textColor = UIColor.white
-        label.text = "\(hours):\(minutes):\(seconds)"
-    
         view.backgroundColor = color
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.run), userInfo: nil, repeats: true)
+        run()
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.run), userInfo: nil, repeats: true)
     }
     
     override var prefersStatusBarHidden: Bool {

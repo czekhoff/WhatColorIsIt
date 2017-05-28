@@ -1,3 +1,3 @@
 # WhatColorIsIt
 
-Swift version of "What color is it?" (change background color based on time).
+Swift version of "What color is it?". The background color is the current time converted into a hex string.
