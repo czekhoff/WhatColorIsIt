@@ -10,8 +10,17 @@ import UIKit
 import Foundation
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var label: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        run()
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            self.run()
+        }
+    }
     
     func run() {
         let dateFormatter = DateFormatter()
@@ -28,14 +37,6 @@ class ViewController: UIViewController {
         let blueColor = CGFloat(seconds) / 255
         let color = UIColor(red: redColor, green: greenColor, blue: blueColor, alpha: 1)
         view.backgroundColor = color
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        run()
-        
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.run), userInfo: nil, repeats: true)
     }
     
     override var prefersStatusBarHidden: Bool {
